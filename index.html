@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Graveyard – The Forgotten Machines of Space Exploration</title>
+  <meta name="description" content="An interactive digital museum documenting human-made spacecraft, rovers, and landers left behind on the Moon and Mars." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">☽</span>
+        <span>SPACE GRAVEYARD</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#intro" class="nav-link">About</a></li>
+        <li><a href="#missions" class="nav-link">Missions</a></li>
+        <li><a href="#explore" class="nav-link">Explore</a></li>
+        <li><a href="#timeline" class="nav-link">Timeline</a></li>
+        <li><a href="#legacy" class="nav-link">Legacy</a></li>
+        <li><a href="#sources" class="nav-link">Sources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="stars" id="stars"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">NASA Space Apps Challenge 2026</p>
+      <h1 class="hero-title">SPACE<br/><span class="accent-cyan">GRAVEYARD</span></h1>
+      <p class="hero-subtitle">The Forgotten Machines of Space Exploration</p>
+      <p class="hero-description">
+        Dozens of human-made machines rest silently on the surfaces of the Moon and Mars.
+        They were pioneers — the first to touch alien soil, the first to see alien skies.
+        This is their story.
+      </p>
+      <a href="#missions" class="btn btn-primary" id="exploreBtn">
+        Explore Missions
+        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+    <div class="scroll-indicator" id="scrollIndicator">
+      <div class="scroll-mouse">
+        <div class="scroll-dot"></div>
+      </div>
+      <p>Scroll to explore</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTRODUCTION SECTION
+  ============================================================ -->
+  <section class="intro" id="intro">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Our Mission</span>
+        <h2>Humanity's Footprints<br/>Beyond Earth</h2>
+      </div>
+      <div class="intro-grid">
+        <div class="intro-text reveal">
+          <p>
+            Since the late 1950s, humanity has dispatched dozens of robotic emissaries to the Moon and Mars.
+            These machines — rovers, landers, orbiters, and probes — have extended our senses billions of
+            kilometres into the solar system, returning images, data, and discoveries that have fundamentally
+            changed our understanding of our cosmic neighbourhood.
+          </p>
+          <p>
+            When their missions ended, these machines were left behind. They rest today exactly where they last
+            operated: on crater rims, in polar plains, on ancient riverbeds. Some ran out of power. Some were
+            claimed by Martian dust storms. Some fulfilled their missions so completely that there was simply
+            nothing left to do — except wait.
+          </p>
+          <p>
+            Space Graveyard is a digital museum dedicated to these forgotten pioneers. By documenting their
+            histories, achievements, and final resting places, we ensure their contributions to science and
+            exploration are never truly lost.
+          </p>
+        </div>
+        <div class="intro-stats reveal">
+          <div class="stat-card">
+            <span class="stat-number" data-target="7">0</span>
+            <span class="stat-label">Missions Documented</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="2">0</span>
+            <span class="stat-label">Worlds Explored</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="65">0</span>
+            <span class="stat-label">Years of Exploration</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="45">0</span>
+            <span class="stat-label">km Driven on Mars</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MISSION EXPLORER SECTION
+  ============================================================ -->
+  <section class="missions" id="missions">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Mission Archive</span>
+        <h2>The Abandoned Explorers</h2>
+        <p class="section-desc">Seven machines that changed our understanding of the solar system — and never came home.</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="mission-filters reveal">
+        <button class="filter-btn active" data-filter="all">All Missions</button>
+        <button class="filter-btn" data-filter="Moon">🌕 Moon</button>
+        <button class="filter-btn" data-filter="Mars">🔴 Mars</button>
+      </div>
+
+      <!-- Mission cards grid -->
+      <div class="mission-grid" id="missionGrid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTERACTIVE EXPLORE SECTION (Moon / Mars Tabs)
+  ============================================================ -->
+  <section class="explore" id="explore">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Exploration Sites</span>
+        <h2>Where They Rest</h2>
+        <p class="section-desc">Choose a destination to learn about the machines left behind.</p>
+      </div>
+
+      <div class="destination-tabs reveal">
+        <button class="dest-tab active" data-dest="moon">
+          <span class="tab-icon">🌕</span>
+          The Moon
+        </button>
+        <button class="dest-tab" data-dest="mars">
+          <span class="tab-icon">🔴</span>
+          Mars
+        </button>
+      </div>
+
+      <!-- Moon Panel -->
+      <div class="dest-panel active" id="moonPanel">
+        <div class="dest-hero dest-hero--moon">
+          <div class="dest-hero-overlay"></div>
+          <div class="dest-hero-content">
+            <h3>The Moon</h3>
+            <p>Earth's natural satellite — humanity's first destination beyond our world.</p>
+          </div>
+        </div>
+        <div class="dest-info">
+          <div class="dest-description">
+            <h4>A Museum in Regolith</h4>
+            <p>
+              The Moon's surface hosts the largest collection of human-made artefacts beyond Earth.
+              With no atmosphere, no weather, and no geological activity, everything left on the
+              lunar surface is preserved almost exactly as it was left — a perfect time capsule of
+              the Space Race era.
+            </p>
+            <p>
+              The Apollo programme alone left behind descent stages, rovers, scientific instruments,
+              flags, and even personal items. The Soviet Luna programme added its own legacy,
+              with Luna 2 becoming the first human-made object to reach another world in 1959.
+            </p>
+          </div>
+          <div class="dest-machines">
+            <h4>Machines Left Behind</h4>
+            <div class="dest-machine-list" id="moonMachines">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mars Panel -->
+      <div class="dest-panel" id="marsPanel">
+        <div class="dest-hero dest-hero--mars">
+          <div class="dest-hero-overlay"></div>
+          <div class="dest-hero-content">
+            <h3>Mars</h3>
+            <p>The Red Planet — a world of ancient rivers, towering volcanoes, and silent rovers.</p>
+          </div>
+        </div>
+        <div class="dest-info">
+          <div class="dest-description">
+            <h4>The Red Graveyard</h4>
+            <p>
+              Mars has claimed several robotic explorers, while others outlived their design lives
+              many times over before finally falling silent. The harsh Martian environment —
+              with its thin atmosphere, extreme temperatures, and planet-wide dust storms — has
+              proven both a challenge and a source of unexpected longevity.
+            </p>
+            <p>
+              Each machine left on Mars tells a story of ambition, perseverance, and discovery.
+              Together, they form a trail of human ingenuity stretching from Ares Vallis to
+              Perseverance Valley.
+            </p>
+          </div>
+          <div class="dest-machines">
+            <h4>Machines Left Behind</h4>
+            <div class="dest-machine-list" id="marsMachines">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIMELINE SECTION
+  ============================================================ -->
+  <section class="timeline-section" id="timeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Chronology</span>
+        <h2>A History in Silence</h2>
+        <p class="section-desc">Key milestones in robotic space exploration, from the first lunar impact to the last Martian sunset.</p>
+      </div>
+      <div class="timeline" id="timelineContainer">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LEGACY / WHY THESE MACHINES MATTER
+  ============================================================ -->
+  <section class="legacy" id="legacy">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Scientific Legacy</span>
+        <h2>Why These Machines Matter</h2>
+        <p class="section-desc">The impact of these missions extends far beyond their operational lifetimes.</p>
+      </div>
+      <div class="legacy-grid">
+
+        <div class="legacy-card reveal">
+          <div class="legacy-icon">🔬</div>
+          <h3>Scientific Discovery</h3>
+          <p>
+            From Sojourner's first soil analysis to Opportunity's confirmation of ancient liquid water,
+            these missions transformed planetary science. They answered fundamental questions about
+            whether Mars could ever have supported life — and raised new ones.
+          </p>
+        </div>
+
+        <div class="legacy-card reveal">
+          <div class="legacy-icon">🛸</div>
+          <h3>Technological Achievement</h3>
+          <p>
+            Each mission demanded entirely new engineering solutions: airbag landing systems,
+            solar panel management under dust conditions, autonomous navigation, and radiation-hardened
+            electronics. Technologies developed for these rovers now appear in medical devices,
+            autonomous vehicles, and consumer electronics.
+          </p>
+        </div>
+
+        <div class="legacy-card reveal">
+          <div class="legacy-icon">📚</div>
+          <h3>Lessons for Future Missions</h3>
+          <p>
+            Spirit's entrapment in soft Martian soil, Phoenix's death by carbon dioxide frost, and
+            Opportunity's loss to a global dust storm — each failure taught engineers exactly what
+            future missions must prepare for. The Perseverance rover and Ingenuity helicopter are
+            direct descendants of these lessons.
+          </p>
+        </div>
+
+        <div class="legacy-card reveal">
+          <div class="legacy-icon">🌍</div>
+          <h3>Inspiration for Generations</h3>
+          <p>
+            These machines captured the imagination of billions. Opportunity's final image before
+            the dust storm struck — a silhouette against a darkening Martian sky — became one of
+            the most shared space images of the decade. They made the exploration of other worlds
+            feel real, urgent, and profoundly human.
+          </p>
+        </div>
+
+        <div class="legacy-card reveal">
+          <div class="legacy-icon">🌱</div>
+          <h3>Path to Human Exploration</h3>
+          <p>
+            Every rover that mapped terrain, every lander that measured radiation, and every probe
+            that studied the Martian atmosphere has contributed directly to plans for human missions.
+            The Apollo descent stages on the Moon mark the first steps on a path that will eventually
+            lead humans back — and onward to Mars.
+          </p>
+        </div>
+
+        <div class="legacy-card reveal">
+          <div class="legacy-icon">🏛️</div>
+          <h3>Cultural Heritage</h3>
+          <p>
+            These sites are, in a very real sense, archaeological sites of the Space Age. The
+            Apollo landing sites are considered cultural heritage locations by multiple space
+            agencies and legal scholars. Preserving their memory — and eventually protecting the
+            physical sites — is a responsibility we owe to future generations.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOURCES AND ACKNOWLEDGEMENTS
+  ============================================================ -->
+  <section class="sources" id="sources">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">References</span>
+        <h2>Sources &amp; Acknowledgements</h2>
+        <p class="section-desc">All mission data sourced from official NASA and international space agency publications.</p>
+      </div>
+
+      <div class="sources-grid reveal">
+
+        <div class="source-category">
+          <h3>Primary NASA Sources</h3>
+          <ul class="source-list">
+            <li><a href="https://www.nasa.gov/mission/mars-exploration-rover-opportunity/" target="_blank" rel="noopener">NASA – Mars Exploration Rover: Opportunity</a></li>
+            <li><a href="https://www.nasa.gov/mission/mars-exploration-rover-spirit/" target="_blank" rel="noopener">NASA – Mars Exploration Rover: Spirit</a></li>
+            <li><a href="https://mars.nasa.gov/mer/home/" target="_blank" rel="noopener">JPL – Mars Exploration Rover Mission Home</a></li>
+            <li><a href="https://www.nasa.gov/mission/mars-pathfinder/" target="_blank" rel="noopener">NASA – Mars Pathfinder (Sojourner)</a></li>
+            <li><a href="https://www.nasa.gov/mission/phoenix/" target="_blank" rel="noopener">NASA – Phoenix Mars Lander</a></li>
+            <li><a href="https://science.nasa.gov/mission/apollo/" target="_blank" rel="noopener">NASA Science – Apollo Programme</a></li>
+            <li><a href="https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1959-014A" target="_blank" rel="noopener">NASA NSSDC – Luna 2</a></li>
+          </ul>
+        </div>
+
+        <div class="source-category">
+          <h3>Image Credits</h3>
+          <ul class="source-list">
+            <li><a href="https://images.nasa.gov/" target="_blank" rel="noopener">NASA Image and Video Library</a></li>
+            <li><a href="https://photojournal.jpl.nasa.gov/" target="_blank" rel="noopener">NASA/JPL Planetary Photojournal</a></li>
+            <li><a href="https://mars.nasa.gov/resources/" target="_blank" rel="noopener">NASA Mars Exploration Resources</a></li>
+            <li>All NASA images are in the public domain unless otherwise noted.</li>
+          </ul>
+        </div>
+
+        <div class="source-category">
+          <h3>Additional References</h3>
+          <ul class="source-list">
+            <li><a href="https://nssdc.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA National Space Science Data Center (NSSDC)</a></li>
+            <li><a href="https://www.spaceappschallenge.org/" target="_blank" rel="noopener">NASA Space Apps Challenge 2026</a></li>
+            <li><a href="https://science.nasa.gov/mars/" target="_blank" rel="noopener">NASA Science – Mars Exploration</a></li>
+            <li><a href="https://science.nasa.gov/moon/" target="_blank" rel="noopener">NASA Science – Moon</a></li>
+          </ul>
+        </div>
+
+        <div class="source-category">
+          <h3>Accuracy Note</h3>
+          <div class="accuracy-note">
+            <p>
+              All mission dates, locations, and scientific achievements presented on this website
+              are drawn from official NASA and international agency sources. Where exact figures
+              are disputed or unclear, conservative estimates are used or the information is omitted.
+              This project was built for the NASA Space Apps Challenge 2026 and prioritises
+              factual accuracy above narrative convenience.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-icon">☽</span>
+          <span class="footer-name">SPACE GRAVEYARD</span>
+          <p>The Forgotten Machines of Space Exploration</p>
+          <p class="footer-challenge">NASA Space Apps Challenge 2026 — "Abandoned but not Forgotten"</p>
+        </div>
+        <div class="footer-links">
+          <a href="#intro">About</a>
+          <a href="#missions">Missions</a>
+          <a href="#explore">Explore</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#legacy">Legacy</a>
+          <a href="#sources">Sources</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with ❤️ for NASA Space Apps Challenge 2026 · Images courtesy NASA/JPL-Caltech (public domain)</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MISSION MODAL
+  ============================================================ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="modal-image-wrap">
+        <img class="modal-image" id="modalImage" src="" alt="" />
+        <div class="modal-image-credit" id="modalImageCredit"></div>
+        <div class="modal-badges" id="modalBadges"></div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <p class="modal-subtitle" id="modalSubtitle"></p>
+        </div>
+        <div class="modal-sections">
+          <div class="modal-section">
+            <h3>Mission Overview</h3>
+            <p id="modalOverview"></p>
+          </div>
+          <div class="modal-section">
+            <h3>Scientific Purpose</h3>
+            <p id="modalScientificPurpose"></p>
+          </div>
+          <div class="modal-section">
+            <h3>Major Achievements</h3>
+            <ul id="modalAchievements" class="modal-achievements"></ul>
+          </div>
+          <div class="modal-section">
+            <h3>What Happened</h3>
+            <p id="modalWhatHappened"></p>
+          </div>
+          <div class="modal-section">
+            <h3>Why It Matters Today</h3>
+            <p id="modalWhyItMatters"></p>
+          </div>
+          <div class="modal-section modal-meta">
+            <div class="meta-item"><span class="meta-label">Last Known Location</span><span id="modalLocation"></span></div>
+            <div class="meta-item"><span class="meta-label">NASA Source</span><a id="modalSource" href="" target="_blank" rel="noopener">View on NASA.gov →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
