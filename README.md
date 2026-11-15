@@ -115,9 +115,9 @@ space-graveyard/
 
 ## 9. Team Contributions
 
-- **Team Member 1:** [Full Name / Role Placeholder]
+- **Team Member 1:** Catherine Maria Benny
   - *Contributions:* Concept architecture, UI/UX design, visual identity, frontend styling & responsive CSS layout, animation design, and presentation pitch.
-- **Team Member 2:** [Full Name / Role Placeholder]
+- **Team Member 2:** Abhiram H
   - *Contributions:* NASA data curation & archival research, telemetry verification, JavaScript dynamic interaction systems (modals, filters, timeline, dynamic counters), and testing.
 
 ---
